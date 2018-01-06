@@ -1,0 +1,81 @@
+﻿@model AuthorizationServer.Models.AuthorizationPageModel
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>@Model.ServiceName | Authorization Page</title>
+  <link rel="stylesheet" href="/css/authorization.css">
+</head>
+<body class="font-default">
+  <div id="page_title">@Model.ServiceName</div>
+
+  <div id="content">
+    <h3 id="client-name">@Model.ClientName</h3>
+    <div class="indent">
+      <img id="logo" src="@Model.LogoUri" alt="[Logo] (150x150)">
+
+      <div id="client-summary">
+        <p>@Model.Description</p>
+        <ul id="client-link-list">
+          @if (Model.ClientUri != null)
+          {
+            <li><a target="_blank" href="@Model.ClientUri">Homepage</a></li>
+          }
+          @if (Model.PolicyUri != null)
+          {
+            <li><a target="_blank" href="@Model.PolicyUri">Policy</a></li>
+          }
+          @if (Model.TosUri != null)
+          {
+            <li><a target="_blank" href="@Model.TosUri">Terms of Service</a></li>
+          }
+        </ul>
+      </div>
+
+      <div style="clear: both;"></div>
+    </div>
+
+    @if (Model.Scopes != null)
+    {
+      <h4 id="permissions">Permissions</h4>
+      <div class="indent">
+        <p>The application is requesting the following permissions.</p>
+        <dl id="scope-list">
+          @foreach (var scope in Model.Scopes)
+          {
+            <dt>@scope.Name</dt>
+            <dd>@scope.Description</dd>
+          }
+        </dl>
+      </div>
+    }
+
+    <h4 id="authorization">Authorization</h4>
+    <div class="indent">
+      @if (Model.User != null)
+      {
+        <p>Hello @Model.User.Name,</p>
+      }
+      <p>Do you grant authorization to the application?</p>
+
+      <form id="authorization-form" action="/api/authorization/decision" method="POST">
+        @if (Model.User == null)
+        {
+          <div id="login-fields" class="indent">
+            <div id="login-prompt">Input Login ID and password.</div>
+            <input type="text" id="loginId" name="loginId" placeholder="Login ID"
+                   class="font-default" required value="@Model.LoginId" @Model.LoginIdReadOnly>
+            <input type="password" id="password" name="password" placeholder="Password"
+                   class="font-default" required>
+          </div>
+        }
+        <div id="authorization-form-buttons">
+          <input type="submit" name="authorized" id="authorize-button" value="Authorize" class="font-default"/>
+          <input type="submit" name="denied"     id="deny-button"      value="Deny"      class="font-default"/>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
