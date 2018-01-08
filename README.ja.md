@@ -158,6 +158,14 @@ Authlete はユーザーアカウントを管理しないので、基本的に�
 のアーキテクチャーは認証と認可を慎重に分離しています。
 
 
+その他の情報
+------------
+
+- [Authlete][5] - Authlete ホームページ
+- [authlete-csharp][3] - C# 用 Authlete ライブラリ
+- [csharp-resource-server][20] - リソースサーバーの実装
+
+
 コンタクト
 ----------
 
@@ -188,3 +196,4 @@ Authlete はユーザーアカウントを管理しないので、基本的に�
 [17]: CUSTOMIZATION.ja.md
 [18]: http://localhost:5000/
 [19]: https://qiita.com/TakahikoKawasaki/items/b2a4fc39e0c1a1949aab
+[20]: https://github.com/authlete/csharp-resource-server

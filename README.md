@@ -143,6 +143,14 @@ into even an existing web service which may already have a mechanism for
 end-user authentication.
 
 
+See Also
+--------
+
+- [Authlete][5] - Authlete Home Page
+- [authlete-csharp][3] - Authlete Library for C#
+- [csharp-resource-server][20] - Resource Server Implementation
+
+
 Contact
 -------
 
@@ -172,3 +180,4 @@ Contact
 [16]: https://www.authlete.com/documents/cd_console
 [17]: CUSTOMIZATION.md
 [18]: http://localhost:5000/
+[20]: https://github.com/authlete/csharp-resource-server
